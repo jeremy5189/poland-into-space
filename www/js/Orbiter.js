@@ -11,7 +11,7 @@ var mouse = new THREE.Vector2(), INTERSECTED;
 var selectedSatellite = null;
 
 var projector = new THREE.Projector();
-
+var filterTo;
 
 var appOptions = {
 	guiOpacity : 0.9
@@ -30,11 +30,12 @@ var cameraNeedsReset = false;
 var newlySelectedSatellite = false;
 
 var categories = [
-	{ category : "STATIONS", description : "Space Stations", enabled : true },
+	{ category : "IRIDIUM", description : "Iridium", enabled : true },
+	/*{ category : "STATIONS", description : "Space Stations", enabled : false },
 	{ category : "SCIENCE", description : "Science", enabled : false },
-	{ category : "VISUAL", description : "Potentially Visible", enabled : true },
+	{ category : "VISUAL", description : "Potentially Visible", enabled : false },
 	{ category : "AMATEUR", description : "Amateur Radio", enabled : false },
-	{ category : "GEO", description : "Geostationary", enabled : true },
+	{ category : "GEO", description : "Geostationary", enabled : false },
 	{ category : "GPS", description : "GPS", enabled : false },
 	{ category : "TLE-NEW", description : "Recent Launches", enabled : false },
 	{ category : "BEIDOU", description : "Beidou", enabled : false },
@@ -50,7 +51,7 @@ var categories = [
 	{ category : "GORIZONT", description : "Gorizont", enabled : false },
 	{ category : "GPS-OPS", description : "GPS Operational", enabled : false },
 	{ category : "INTELSAT", description : "Intelsat", enabled : false },
-	{ category : "IRIDIUM", description : "Iridium", enabled : false },
+	{ category : "IRIDIUM", description : "Iridium", enabled : true },
 	{ category : "MILITARY", description : "Misc. Military", enabled : false },
 	{ category : "MOLNIYA", description : "Molniya", enabled : false },
 	{ category : "MUSSON", description : "Russian LEO Nav", enabled : false },
@@ -125,6 +126,7 @@ function getOrbitColor(f)
 
 
 function addToPrimaryScene(obj) {
+	console.log('addToPrimaryScene', obj);
 	engine.context.objects.push(obj);
 	engine.context.primaryScene.add(obj);
 }
@@ -319,9 +321,6 @@ function createMoon(planet, moonConfig)
 	planet.context.configChanged = true;
 };
 	
-
-
-
 $(function() {
 
 	$("body").on({
@@ -458,7 +457,7 @@ $(function() {
 		contextLostCallback : contextLostCallback
 	};
 	
-	var filterTo = AppEnv.getUrlVar("sat");
+	filterTo = AppEnv.getUrlVar("sat");
 	if (filterTo) {
 		for (var i = 0; i < categories.length; i++) {
 			categories[i].enabled = true;
@@ -480,9 +479,6 @@ $(function() {
 
 	var moonConfig = KMG.Util.extend({}, KMG.DefaultMoonConfig);
 	createMoon(engine, moonConfig);
-
-
-
 	
 	//axisLines = new KMG.LibrationAxisLines(context, {});
 	//addToPrimaryScene(axisLines);
@@ -717,60 +713,8 @@ $(function() {
 		success: function(data, textStatus, jqxhr) {
 			
 			setLoadingStatus("Rendering satellites...");
-			for (var i = 0; i < KMG.ORBITS.length; i++) {
-			// for (var i = 0; i < 10; i++) {
-				var group = KMG.ORBITS[i];
-				var groupName = group.name;
-				
-				if (categoryOptions[groupName] == undefined) {
-					categoryOptions[groupName] = false;
-					categoryGui.addToggle(groupName, groupName).addChangeListener(function(property, title, oldValue, newValue) {
-						setCategoryVisibility(property, newValue);
-					});
-				}
-				
-				
-				
-				for (var e = 0; e < group.entries.length; e++) {
-					var entry = group.entries[e];
-					
-					
-					
-					if (!filterTo || (filterTo == entry.satelliteNumber)) {
-					//if (entry.name == "ISS (ZARYA)") {
-						if (satelliteMap[entry.satelliteNumber]) {
-							satelliteMap[entry.satelliteNumber].categories.push(groupName);
-							continue;
-						}
-						
-						
-						var satellite = {
-							name : entry.name,
-							orbit : KMG.Util.clone(entry),
-							categories : [groupName],
-							dot : null,
-							path : null,
-							orbiter : null
-						};
-						satelliteMap[entry.satelliteNumber] = satellite;
-						//Adding to array to cross associate for the drop down of satellites
-						satelliteArray.push(entry.name);
-					}
-				}
-				
-			}
-			
-			for (key in satelliteMap) {
-				var satellite = satelliteMap[key];
-				createOrbitor(context, satellite, tickController);
-			}
-			
-			// Double check the category visibility...
-			for (var i = 0; i < KMG.ORBITS.length; i++) {
-				var group = KMG.ORBITS[i];
-				var groupName = group.name;
-				setCategoryVisibility(groupName, false);
-			}
+
+			make_sat_data_into_orbit(context, filterTo);
 
 			var satelliteGui = gui.left.createBlock("Satellites");
 
@@ -808,6 +752,89 @@ $(function() {
 		}
 	});
 	
-	
-	
 });	
+
+function make_sat_data_into_orbit(context, filterTo) {
+
+	for (var i = 0; i < KMG.ORBITS.length; i++) {
+
+		var group = KMG.ORBITS[i];
+		var groupName = group.name;
+		
+		if (categoryOptions[groupName] == undefined) {
+			categoryOptions[groupName] = false;
+			categoryGui.addToggle(groupName, groupName).addChangeListener(function(property, title, oldValue, newValue) {
+				setCategoryVisibility(property, newValue);
+			});
+		}
+		
+		for (var e = 0; e < group.entries.length; e++) {
+			
+			var entry = group.entries[e];	
+			if (!filterTo || (filterTo == entry.satelliteNumber)) {
+				
+				if (satelliteMap[entry.satelliteNumber]) {
+					satelliteMap[entry.satelliteNumber].categories.push(groupName);
+					continue;
+				}						
+				
+				var satellite = {
+					name : entry.name,
+					orbit : KMG.Util.clone(entry),
+					categories : [groupName],
+					dot : null,
+					path : null,
+					orbiter : null
+				};
+
+				satelliteMap[entry.satelliteNumber] = satellite;
+				
+				// Adding to array to cross associate for the drop down of satellites
+				satelliteArray.push(entry.name);
+			}
+		}
+	}
+
+	for (key in satelliteMap) {
+		var satellite = satelliteMap[key];
+		createOrbitor(context, satellite, tickController);
+	}
+
+	// Double check the category visibility...
+	for (var i = 0; i < KMG.ORBITS.length; i++) {
+		var group = KMG.ORBITS[i];
+		var groupName = group.name;
+		setCategoryVisibility(groupName, false);
+	}
+}
+
+function add_sat(_inclination) {
+	KMG.ORBITS[0].entries.push({
+		name : "IRIDIUM 9 [+]",
+		satelliteNumber : _inclination.toString(),
+		classification : "U",
+		internationalDesignator : "97020A",
+		launchYear : 97,
+		launchNumberForYear : 020,
+		launchPieceNumber : "A",
+		epochYear : 14.0,
+		epochDay : 101.40472434,
+		derivativeOfMeanMotion : 2.79e-06,
+		meanMotion : 14.34209898,
+		dragTerm : "0.92590-4",
+		ephemerisType : 0,
+		semiMajorAxis : 7155.80566796,
+		longitudeOfPerihelion : 0,
+		eccentricity : 0.0002214,
+		inclination : _inclination,
+		ascendingNode : 84.7455, 
+		argOfPeriapsis : 101.4814,
+		meanAnomalyAtEpoch : 258.6631,
+		period : 0.0697247931025,
+		isDebris : "no",
+		epoch : 2456758.90472,
+		epochStart : 5215.40472434,
+		epochNow : 5216.00084491
+	});
+	make_sat_data_into_orbit(engine.context, filterTo);
+}
