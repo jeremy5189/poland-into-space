@@ -839,8 +839,12 @@ function add_sat(_inclination) {
 	make_sat_data_into_orbit(engine.context, filterTo);
 }
 
-function remove_sat(name){
-	var satellite = getSatelliteByName(name);
+function remove_sat(satellite){
 	engine.context.primaryScene.remove(satellite.dot)
 	engine.context.primaryScene.remove(satellite.path)
+	console.log(engine.context.objects)
+	engine.context.objects=engine.context.objects.filter(function(val){
+		return val.uuid != satellite.dot.uuid && val.uuid != satellite.path.uuid
+	})
+	console.log(engine.context.objects)
 }
