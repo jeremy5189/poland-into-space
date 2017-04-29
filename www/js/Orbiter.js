@@ -811,7 +811,14 @@ function make_sat_data_into_orbit(context, filterTo) {
 
 var global_add_count = 1;
 
-function change_sat(_inclination) {
+function change_sat(
+	_meanAnomalyAtEpoch,
+	_meanMotion,
+	_derivativeOfMeanMotion,
+	_semiMajorAxis,
+	_inclunation,
+	_eccentricity
+) {
 	
 	remove_sat(satelliteMap[global_add_count]);
 	//KMG.ORBITS[0].entries[0].inclination = _inclination;
@@ -829,17 +836,17 @@ function change_sat(_inclination) {
 			launchPieceNumber : "A",
 			epochYear : 14.0,
 			epochDay : 101.40472434,
-			derivativeOfMeanMotion : 2.79e-06,
-			meanMotion : 14.34209898,
-			dragTerm : "0.92590-4",
+			derivativeOfMeanMotion : _derivativeOfMeanMotion,
+			meanMotion : _meanMotion, // 平均運動
+			dragTerm : "0.92590-4", 
 			ephemerisType : 0,
-			semiMajorAxis : 7155.80566796,
+			semiMajorAxis : _semiMajorAxis,
 			longitudeOfPerihelion : 0,
-			eccentricity : 0.0002214,
+			eccentricity : _eccentricity,
 			inclination : _inclination,
 			ascendingNode : 84.7455, 
 			argOfPeriapsis : 101.4814,
-			meanAnomalyAtEpoch : 258.6631,
+			meanAnomalyAtEpoch : _meanAnomalyAtEpoch,
 			period : 0.0697247931025,
 			isDebris : "no",
 			epoch : 2456758.90472,
