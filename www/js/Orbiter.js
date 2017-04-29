@@ -30,7 +30,7 @@ var cameraNeedsReset = false;
 var newlySelectedSatellite = false;
 
 var categories = [
-	{ category : "IRIDIUM", description : "Iridium", enabled : true },
+	{ category : "POLAND", description : "Poland", enabled : true },
 	/*{ category : "STATIONS", description : "Space Stations", enabled : false },
 	{ category : "SCIENCE", description : "Science", enabled : false },
 	{ category : "VISUAL", description : "Potentially Visible", enabled : false },
@@ -477,8 +477,8 @@ $(function() {
 	earth = new KMG.TexturedSphereObject(context, earthConfig);
 	addToPrimaryScene(earth);
 
-	var moonConfig = KMG.Util.extend({}, KMG.DefaultMoonConfig);
-	createMoon(engine, moonConfig);
+	//var moonConfig = KMG.Util.extend({}, KMG.DefaultMoonConfig);
+	//createMoon(engine, moonConfig);
 	
 	//axisLines = new KMG.LibrationAxisLines(context, {});
 	//addToPrimaryScene(axisLines);
@@ -795,6 +795,7 @@ function make_sat_data_into_orbit(context, filterTo) {
 		}
 	}
 
+	console.log('satelliteMap', satelliteMap);
 	for (key in satelliteMap) {
 		var satellite = satelliteMap[key];
 		createOrbitor(context, satellite, tickController);
@@ -808,43 +809,59 @@ function make_sat_data_into_orbit(context, filterTo) {
 	}
 }
 
-function add_sat(_inclination) {
-	KMG.ORBITS[0].entries.push({
-		name : "IRIDIUM 9 [+]",
-		satelliteNumber : _inclination.toString(),
-		classification : "U",
-		internationalDesignator : "97020A",
-		launchYear : 97,
-		launchNumberForYear : 020,
-		launchPieceNumber : "A",
-		epochYear : 14.0,
-		epochDay : 101.40472434,
-		derivativeOfMeanMotion : 2.79e-06,
-		meanMotion : 14.34209898,
-		dragTerm : "0.92590-4",
-		ephemerisType : 0,
-		semiMajorAxis : 7155.80566796,
-		longitudeOfPerihelion : 0,
-		eccentricity : 0.0002214,
-		inclination : _inclination,
-		ascendingNode : 84.7455, 
-		argOfPeriapsis : 101.4814,
-		meanAnomalyAtEpoch : 258.6631,
-		period : 0.0697247931025,
-		isDebris : "no",
-		epoch : 2456758.90472,
-		epochStart : 5215.40472434,
-		epochNow : 5216.00084491
-	});
+var global_add_count = 1;
+
+function change_sat(_inclination) {
+	
+	remove_sat(satelliteMap[global_add_count]);
+	//KMG.ORBITS[0].entries[0].inclination = _inclination;
+	//console.log(KMG.ORBITS[0].entries[0]);
+	global_add_count++;
+
+	KMG.ORBITS[0].entries.push(
+		{
+			name : "Poland-" + global_add_count,
+			satelliteNumber : global_add_count,
+			classification : "U",
+			internationalDesignator : "97020A",
+			launchYear : 97,
+			launchNumberForYear : 020,
+			launchPieceNumber : "A",
+			epochYear : 14.0,
+			epochDay : 101.40472434,
+			derivativeOfMeanMotion : 2.79e-06,
+			meanMotion : 14.34209898,
+			dragTerm : "0.92590-4",
+			ephemerisType : 0,
+			semiMajorAxis : 7155.80566796,
+			longitudeOfPerihelion : 0,
+			eccentricity : 0.0002214,
+			inclination : _inclination,
+			ascendingNode : 84.7455, 
+			argOfPeriapsis : 101.4814,
+			meanAnomalyAtEpoch : 258.6631,
+			period : 0.0697247931025,
+			isDebris : "no",
+			epoch : 2456758.90472,
+			epochStart : 5215.40472434,
+			epochNow : 5216.00084491
+		}
+	);
+	KMG.ORBITS[0].entries.splice(0, 1);
+	console.log(KMG.ORBITS[0].entries);
+	satelliteMap = {};
 	make_sat_data_into_orbit(engine.context, filterTo);
 }
 
 function remove_sat(satellite){
+
 	engine.context.primaryScene.remove(satellite.dot)
 	engine.context.primaryScene.remove(satellite.path)
-	console.log(engine.context.objects)
+	engine.context.primaryScene.remove(satellite.orbiter)
+	
+	console.log(engine.context.objects.length)
 	engine.context.objects=engine.context.objects.filter(function(val){
-		return val.uuid != satellite.dot.uuid && val.uuid != satellite.path.uuid
+		return val.uuid != satellite.dot.uuid && val.uuid != satellite.path.uuid && val.uuid != satellite.orbiter.uuid
 	})
-	console.log(engine.context.objects)
+	console.log(engine.context.objects.length)
 }

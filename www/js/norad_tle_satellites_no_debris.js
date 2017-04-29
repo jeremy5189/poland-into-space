@@ -1,10 +1,10 @@
 KMG.ORBITS = [
 	{
-		name : "IRIDIUM",
+		name : "POLAND",
 		entries : [
 			{
-				name : "IRIDIUM 8 [+]",
-				satelliteNumber : "24792",
+				name : "Poland-1",
+				satelliteNumber : 1,
 				classification : "U",
 				internationalDesignator : "97020A",
 				launchYear : 97,
