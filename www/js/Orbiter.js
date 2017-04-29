@@ -249,7 +249,7 @@ function onDocumentMouseDown( event ) {
 			}
 
 			satellite.nameSprite.position = satellite.dot.position;
-			selectedSatellite = satellite;
+			// selectedSatellite = satellite;
 			// context.camera.position.x = satellite.dot.position.x;
 			// context.camera.position.y = satellite.dot.position.y;
 			// context.camera.position.z = satellite.dot.position.z;
@@ -723,10 +723,10 @@ $(function() {
 			var satelliteGui = gui.left.createBlock("Ride on Satellites");
 
 			satelliteGui.addSelect('satelliteToPilot', 'Satellite to Pilot', satelliteArray).addChangeListener(function(property, title, oldValue, newValue){
+				console.log('===========================', selectedSatellite);
 				var satellite = getSatelliteByName(newValue);
 				selectedSatellite = satellite;
 				newlySelectedSatellite = true;
-				console.log('===========================', selectedSatellite);
 				setCameraToSatellite(satellite);
 			});
 
@@ -736,12 +736,19 @@ $(function() {
 				newlySelectedSatellite = true;
 			});
 
-			satelliteGui.addAction('Mount Geostationary Satellite', function() {
-				var sat = getSatelliteByName('BEIDOU G1');
+			// satelliteGui.addAction('Mount Geostationary Satellite', function() {
+			// 	var sat = getSatelliteByName('TEST');
+			// 	selectedSatellite = sat;
+			// 	newlySelectedSatellite = true;
+			// 	setCameraToSatellite(sat);
+			// });
+
+			try {
+				var sat = satelliteMap[0];
 				selectedSatellite = sat;
 				newlySelectedSatellite = true;
 				setCameraToSatellite(sat);
-			});
+			} catch (ex) {}
 			
 			$( "#loading-screen" ).css("display", "none");
 		}
