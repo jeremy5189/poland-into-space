@@ -31,6 +31,7 @@ var newlySelectedSatellite = false;
 
 var categories = [
 	{ category : "POLAND", description : "Poland", enabled : true },
+	{ category : "TEST", description : "Test", enabled : true },
 	/*{ category : "STATIONS", description : "Space Stations", enabled : false },
 	{ category : "SCIENCE", description : "Science", enabled : false },
 	{ category : "VISUAL", description : "Potentially Visible", enabled : false },
@@ -235,6 +236,7 @@ function onDocumentMouseDown( event ) {
 	
 	var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
 	for(var key in satelliteMap) {
+		
 		var satellite = satelliteMap[key];
 		
 		var pos = satellite.dot.position.clone();
@@ -247,7 +249,7 @@ function onDocumentMouseDown( event ) {
 			}
 
 			satellite.nameSprite.position = satellite.dot.position;
-			// selectedSatellite = satellite;
+			selectedSatellite = satellite;
 			// context.camera.position.x = satellite.dot.position.x;
 			// context.camera.position.y = satellite.dot.position.y;
 			// context.camera.position.z = satellite.dot.position.z;
@@ -271,12 +273,13 @@ function onDocumentMouseDown( event ) {
 }
 
 function setCameraToSatellite(satellite) {
-	// console.log('setCameraToSatellite');
+	console.log('setCameraToSatellite');
 	if(!pilotSatellite) {
 		console.log('setCameraToSatellite - !pilotSatellite');
 		return; //We dont need to set camera if we dont have toggle enabled
 	}
 	var context = engine.context;
+	console.log(satellite);
 	selectedSatellite = satellite;
 	context.camera.position.x = satellite.dot.position.x;
 	context.camera.position.y = satellite.dot.position.y;
@@ -723,6 +726,7 @@ $(function() {
 				var satellite = getSatelliteByName(newValue);
 				selectedSatellite = satellite;
 				newlySelectedSatellite = true;
+				console.log('===========================', selectedSatellite);
 				setCameraToSatellite(satellite);
 			});
 
@@ -738,16 +742,6 @@ $(function() {
 				newlySelectedSatellite = true;
 				setCameraToSatellite(sat);
 			});
-
-			//the first run through, we need to have the first item in the list get selected.
-			//NOTE: Beidou needs to exist, it may not. 
-			try {
-				var sat = getSatelliteByName('BEIDOU G1');
-				selectedSatellite = sat;
-				newlySelectedSatellite = true;
-				setCameraToSatellite(sat);
-			} catch (ex) {}
-
 			
 			$( "#loading-screen" ).css("display", "none");
 		}
