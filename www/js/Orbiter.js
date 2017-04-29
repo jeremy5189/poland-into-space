@@ -838,3 +838,9 @@ function add_sat(_inclination) {
 	});
 	make_sat_data_into_orbit(engine.context, filterTo);
 }
+
+function remove_sat(name){
+	var satellite = getSatelliteByName(name);
+	engine.context.primaryScene.remove(satellite.dot)
+	engine.context.primaryScene.remove(satellite.path)
+}
