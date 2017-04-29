@@ -515,7 +515,7 @@ $(function() {
 
 			tickController.speed = 1 + (1000 * modelOptions.tickDelayGui);
 
-			$("#date-container").text(moment(tickController.tickDate).format("LLL"));
+			$("#date-container").text(moment(tickController.tickDate).format("LLL")+" UTC");
 			
 			// var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
 			//Uncomment this code to have mouse overs to show names of satellites. 
@@ -636,21 +636,21 @@ $(function() {
 	
 	
 	
-	var modelGui = gui.left.createBlock("Model", modelOptions);
+	var modelGui = gui.left.createBlock("Controller", modelOptions);
 	
 
-	var startLabel = (AppEnv.getUrlVar("start")) ? "Pause" : 'Start Animation';
+	var startLabel = (AppEnv.getUrlVar("start")) ? "Pause Game" : 'Start Game';
 	modelGui.addAction(startLabel, function(e, btn) {
 		if (tickController.isActive()) {
-			btn.button( "option", "label", "Resume" );
+			btn.button( "option", "label", "Resume Game" );
 			tickController.stop();
 		} else {
-			btn.button( "option", "label", "Pause" );
+			btn.button( "option", "label", "Pause Game" );
 			tickController.start();
 		}
 	});
 	
-	modelGui.addToggle('pathsVisible', 'Show Orbits:').addChangeListener(function(property, title, oldValue, newValue) {
+	modelGui.addToggle('pathsVisible', 'Show path:').addChangeListener(function(property, title, oldValue, newValue) {
 		setPathVisibility(newValue);
 	});
 	modelOptions.tickDelayGui = .05;
@@ -658,9 +658,9 @@ $(function() {
 	if (warp) {
 		modelOptions.tickDelayGui = parseFloat(warp);
 	}
-	modelGui.addRange('tickDelayGui', 'Animation Speed', 0, 1, .01);	
+	modelGui.addRange('tickDelayGui', 'Game Speed', 0, 1, .01);	
 	
-	var categoryGui = gui.right.createBlock("Categories", categoryOptions);
+	var categoryGui = gui.right.createBlock("Satellites", categoryOptions);
 	if (filterTo) { 
 		categoryGui.setVisible(false);
 	}
@@ -679,10 +679,11 @@ $(function() {
 		categoryOptions[category.category] = category.enabled;
 		var c = new categoryToggle(categoryGui, category);
 	}
+	categoryGui.setExpandedState(KMG.Closed);
 
-	var localStarGui = gui.right.createBlock("Local Star");
+	var localStarGui = gui.right.createBlock("Sun");
 		localStarGui.setExpandedState(KMG.Closed);
-		localStarGui.addToggle('displayLocalStar', 'Display Local Star:');
+		localStarGui.addToggle('displayLocalStar', 'Display Sun:');
 		localStarGui.addRange('localStarDistance', 'Size:', 0.0, 10.0, 0.01);
 		localStarGui.addSelect('localStarTexture', 'Texture:', starFlareNames);
 		// localStarGui.addColor('localStarColor', 'Color:');
@@ -716,7 +717,7 @@ $(function() {
 
 			make_sat_data_into_orbit(context, filterTo);
 
-			var satelliteGui = gui.left.createBlock("Satellites");
+			var satelliteGui = gui.left.createBlock("Ride on Satellites");
 
 			satelliteGui.addSelect('satelliteToPilot', 'Satellite to Pilot', satelliteArray).addChangeListener(function(property, title, oldValue, newValue){
 				var satellite = getSatelliteByName(newValue);
