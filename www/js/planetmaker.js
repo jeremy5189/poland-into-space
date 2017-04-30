@@ -8150,8 +8150,8 @@ KMG.OrbitLineShader = {
 
 KMG.DefaultBasicOrbitPathLineConfig = {
 
-	distance : 1.0,
-	opacity : 0.75,
+	distance : 10.0,
+	opacity : 1,
 	transparent : true,
 	color : [ 255, 255, 255 ]
 
@@ -8200,13 +8200,13 @@ KMG.BasicOrbitPathLine.prototype = Object.create( KMG.BaseObject.prototype );
 
 KMG.DefaultOrbitPathLineConfig = {
 	scale : 5,
-	opacity : 0.55,
+	opacity : 0.8,
 	transparent : true,
 	color : 0xFFFFFF,
 	segments : 100,
 	closeOrbit : true,
 	subdivisions : 12,
-	lineThickness : 1.0
+	lineThickness : 5.0
 };
 KMG.DefaultOrbitPathLineConfig = KMG.Util.extend(KMG.DefaultOrbitPathLineConfig, KMG.OrbitDefinitions.template);
 

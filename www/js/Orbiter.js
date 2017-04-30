@@ -810,13 +810,15 @@ function make_sat_data_into_orbit(context, filterTo) {
 }
 
 var global_add_count = 1;
+var global_inclination = 86.3942;
+var semiMajorAxis = 7155.8056;
 
 function change_sat(
 	_meanAnomalyAtEpoch,
 	_meanMotion,
 	_derivativeOfMeanMotion,
 	_semiMajorAxis,
-	_inclunation,
+	_inclination,
 	_eccentricity
 ) {
 	
