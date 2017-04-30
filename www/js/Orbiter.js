@@ -172,9 +172,9 @@ function createOrbitor(context, satellite, tickController) {
 	satellite.orbit.semiMajorAxis = satellite.orbit.semiMajorAxis / 6371 * 200;
 	satellite.orbit.color = getOrbitColor(satellite);
 	
-	var texture = (satellite.orbit.name == "ISS (ZARYA)") ? "/img/sprites/iss_100x100.png" : "/img/sprites/satellite_100x100.png";
-	var size = (satellite.orbit.name == "ISS (ZARYA)") ? 25 : 15;
-	satellite.dot = new KMG.DotPlotObject(context, {color:0xFF0000, size: size, texture: texture });
+	var texture = (satellite.orbit.name == "ISS (ZARYA)") ? "/img/sprites/iss_100x100.png" : "/img/sprites/pball.png";
+	var size = (satellite.orbit.name == "ISS (ZARYA)") ? 25 : 50;
+	satellite.dot = new KMG.DotPlotObject(context, {color:0xFFFFFF, size: size, texture: texture });
 	satellite.dot.position.set(-200, 0, 0);
 	addToPrimaryScene(satellite.dot);
 	
