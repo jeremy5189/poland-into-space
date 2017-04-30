@@ -36,7 +36,7 @@ KMG.ORBITS = [
 		entries : [
 			{
 				name : "Test-1",
-				satelliteNumber : "t8787",
+				satelliteNumber : -1,
 				classification : "U",
 				internationalDesignator : "97020A",
 				launchYear : 97,
