@@ -274,7 +274,7 @@ function onDocumentMouseDown( event ) {
 
 function setCameraToSatellite(satellite) {
 	console.log('setCameraToSatellite');
-	satellite=getSatelliteByName("Poland-"+global_add_count)
+	satellite=getSatelliteByName("Poland-"+global_add_count);
 	if(!pilotSatellite) {
 		console.log('setCameraToSatellite - !pilotSatellite');
 		return; //We dont need to set camera if we dont have toggle enabled
@@ -719,17 +719,17 @@ $(function() {
 			
 			setLoadingStatus("Rendering satellites...");
 
-			make_sat_data_into_orbit(context, filterTo);
+			make_sat_data_into_orbit(context, filterTo, true);
 
 			var satelliteGui = gui.left.createBlock("Ride on Satellites");
 
-			satelliteGui.addSelect('satelliteToPilot', 'Satellite to Pilot', satelliteArray).addChangeListener(function(property, title, oldValue, newValue){
-				console.log('===========================', selectedSatellite);
-				var satellite = getSatelliteByName(newValue);
-				selectedSatellite = satellite;
-				newlySelectedSatellite = true;
-				setCameraToSatellite(satellite);
-			});
+			// satelliteGui.addSelect('satelliteToPilot', 'Satellite to Pilot', satelliteArray).addChangeListener(function(property, title, oldValue, newValue){
+			// 	console.log('===========================', selectedSatellite);
+			// 	var satellite = getSatelliteByName(newValue);
+			// 	selectedSatellite = satellite;
+			// 	newlySelectedSatellite = true;
+			// 	setCameraToSatellite(satellite);
+			// });
 
 			satelliteGui.addToggle('pilotSatellite', 'Pilot Satellite').addChangeListener(function(property, title, oldValue, newValue) {
 				pilotSatellite = newValue;
@@ -757,9 +757,10 @@ $(function() {
 	
 });	
 
-function make_sat_data_into_orbit(context, filterTo) {
-
-	for (var i = 0; i < KMG.ORBITS.length; i++) {
+function make_sat_data_into_orbit(context, filterTo, first) {
+	var n = 1
+	if(first)n=KMG.ORBITS.length
+	for (var i = 0; i < n; i++) {
 
 		var group = KMG.ORBITS[i];
 		var groupName = group.name;
@@ -862,7 +863,7 @@ function change_sat(
 	KMG.ORBITS[0].entries.splice(0, 1);
 	console.log(KMG.ORBITS[0].entries);
 	satelliteMap = {};
-	make_sat_data_into_orbit(engine.context, filterTo);
+	make_sat_data_into_orbit(engine.context, filterTo, false);
 }
 
 function remove_sat(satellite){
