@@ -274,6 +274,7 @@ function onDocumentMouseDown( event ) {
 
 function setCameraToSatellite(satellite) {
 	console.log('setCameraToSatellite');
+	satellite=getSatelliteByName("Poland-"+global_add_count)
 	if(!pilotSatellite) {
 		console.log('setCameraToSatellite - !pilotSatellite');
 		return; //We dont need to set camera if we dont have toggle enabled
@@ -744,7 +745,7 @@ $(function() {
 			// });
 
 			try {
-				var sat = satelliteMap[0];
+				var sat = getSatelliteByName("Poland-"+global_add_count);
 				selectedSatellite = sat;
 				newlySelectedSatellite = true;
 				setCameraToSatellite(sat);
