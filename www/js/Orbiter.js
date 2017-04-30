@@ -284,12 +284,12 @@ function setCameraToSatellite(satellite) {
 	context.camera.position.x = satellite.dot.position.x;
 	context.camera.position.y = satellite.dot.position.y;
 	context.camera.position.z = satellite.dot.position.z;
-
-	if(newlySelectedSatellite) {
-		var vectorPointingAtEarth = new THREE.Vector3(-1*satellite.dot.position.x, -1*satellite.dot.position.y, -1*satellite.dot.position.z);
-		context.camera.lookAt(vectorPointingAtEarth);
-		newlySelectedSatellite = false;
-	}
+	context.camera.lookAt(earth.parent.position);
+	// if(newlySelectedSatellite) {
+	// 	// var vectorPointingAtEarth = new THREE.Vector3(-1*satellite.dot.position.x, -1*satellite.dot.position.y, -1*satellite.dot.position.z);
+	// 	context.camera.lookAt(earth.parent.position);
+	// 	newlySelectedSatellite = false;
+	// }
 }
 
 function resetCamera() {
