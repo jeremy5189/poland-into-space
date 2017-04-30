@@ -31,6 +31,7 @@ var newlySelectedSatellite = false;
 
 var categories = [
 	{ category : "POLAND", description : "Poland", enabled : true },
+	{ category : "TEST", description : "Test", enabled : true },
 	/*{ category : "STATIONS", description : "Space Stations", enabled : false },
 	{ category : "SCIENCE", description : "Science", enabled : false },
 	{ category : "VISUAL", description : "Potentially Visible", enabled : false },
@@ -235,6 +236,7 @@ function onDocumentMouseDown( event ) {
 	
 	var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
 	for(var key in satelliteMap) {
+		
 		var satellite = satelliteMap[key];
 		
 		var pos = satellite.dot.position.clone();
@@ -271,22 +273,23 @@ function onDocumentMouseDown( event ) {
 }
 
 function setCameraToSatellite(satellite) {
-	// console.log('setCameraToSatellite');
+	console.log('setCameraToSatellite');
 	if(!pilotSatellite) {
 		console.log('setCameraToSatellite - !pilotSatellite');
 		return; //We dont need to set camera if we dont have toggle enabled
 	}
 	var context = engine.context;
+	console.log(satellite);
 	selectedSatellite = satellite;
 	context.camera.position.x = satellite.dot.position.x;
 	context.camera.position.y = satellite.dot.position.y;
 	context.camera.position.z = satellite.dot.position.z;
-
-	if(newlySelectedSatellite) {
-		var vectorPointingAtEarth = new THREE.Vector3(-1*satellite.dot.position.x, -1*satellite.dot.position.y, -1*satellite.dot.position.z);
-		context.camera.lookAt(vectorPointingAtEarth);
-		newlySelectedSatellite = false;
-	}
+	context.camera.lookAt(earth.parent.position);
+	// if(newlySelectedSatellite) {
+	// 	// var vectorPointingAtEarth = new THREE.Vector3(-1*satellite.dot.position.x, -1*satellite.dot.position.y, -1*satellite.dot.position.z);
+	// 	context.camera.lookAt(earth.parent.position);
+	// 	newlySelectedSatellite = false;
+	// }
 }
 
 function resetCamera() {
@@ -515,7 +518,7 @@ $(function() {
 
 			tickController.speed = 1 + (1000 * modelOptions.tickDelayGui);
 
-			$("#date-container").text(moment(tickController.tickDate).format("LLL"));
+			$("#date-container").text(moment(tickController.tickDate).format("LLL")+" UTC");
 			
 			// var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
 			//Uncomment this code to have mouse overs to show names of satellites. 
@@ -636,21 +639,21 @@ $(function() {
 	
 	
 	
-	var modelGui = gui.left.createBlock("Model", modelOptions);
+	var modelGui = gui.left.createBlock("Controller", modelOptions);
 	
 
-	var startLabel = (AppEnv.getUrlVar("start")) ? "Pause" : 'Start Animation';
+	var startLabel = (AppEnv.getUrlVar("start")) ? "Pause Game" : 'Start Game';
 	modelGui.addAction(startLabel, function(e, btn) {
 		if (tickController.isActive()) {
-			btn.button( "option", "label", "Resume" );
+			btn.button( "option", "label", "Resume Game" );
 			tickController.stop();
 		} else {
-			btn.button( "option", "label", "Pause" );
+			btn.button( "option", "label", "Pause Game" );
 			tickController.start();
 		}
 	});
 	
-	modelGui.addToggle('pathsVisible', 'Show Orbits:').addChangeListener(function(property, title, oldValue, newValue) {
+	modelGui.addToggle('pathsVisible', 'Show path:').addChangeListener(function(property, title, oldValue, newValue) {
 		setPathVisibility(newValue);
 	});
 	modelOptions.tickDelayGui = .05;
@@ -658,9 +661,9 @@ $(function() {
 	if (warp) {
 		modelOptions.tickDelayGui = parseFloat(warp);
 	}
-	modelGui.addRange('tickDelayGui', 'Animation Speed', 0, 1, .01);	
+	modelGui.addRange('tickDelayGui', 'Game Speed', 0, 1, .01);	
 	
-	var categoryGui = gui.right.createBlock("Categories", categoryOptions);
+	var categoryGui = gui.right.createBlock("Satellites", categoryOptions);
 	if (filterTo) { 
 		categoryGui.setVisible(false);
 	}
@@ -679,10 +682,11 @@ $(function() {
 		categoryOptions[category.category] = category.enabled;
 		var c = new categoryToggle(categoryGui, category);
 	}
+	categoryGui.setExpandedState(KMG.Closed);
 
-	var localStarGui = gui.right.createBlock("Local Star");
+	var localStarGui = gui.right.createBlock("Sun");
 		localStarGui.setExpandedState(KMG.Closed);
-		localStarGui.addToggle('displayLocalStar', 'Display Local Star:');
+		localStarGui.addToggle('displayLocalStar', 'Display Sun:');
 		localStarGui.addRange('localStarDistance', 'Size:', 0.0, 10.0, 0.01);
 		localStarGui.addSelect('localStarTexture', 'Texture:', starFlareNames);
 		// localStarGui.addColor('localStarColor', 'Color:');
@@ -716,9 +720,10 @@ $(function() {
 
 			make_sat_data_into_orbit(context, filterTo);
 
-			var satelliteGui = gui.left.createBlock("Satellites");
+			var satelliteGui = gui.left.createBlock("Ride on Satellites");
 
 			satelliteGui.addSelect('satelliteToPilot', 'Satellite to Pilot', satelliteArray).addChangeListener(function(property, title, oldValue, newValue){
+				console.log('===========================', selectedSatellite);
 				var satellite = getSatelliteByName(newValue);
 				selectedSatellite = satellite;
 				newlySelectedSatellite = true;
@@ -731,22 +736,19 @@ $(function() {
 				newlySelectedSatellite = true;
 			});
 
-			satelliteGui.addAction('Mount Geostationary Satellite', function() {
-				var sat = getSatelliteByName('BEIDOU G1');
-				selectedSatellite = sat;
-				newlySelectedSatellite = true;
-				setCameraToSatellite(sat);
-			});
+			// satelliteGui.addAction('Mount Geostationary Satellite', function() {
+			// 	var sat = getSatelliteByName('TEST');
+			// 	selectedSatellite = sat;
+			// 	newlySelectedSatellite = true;
+			// 	setCameraToSatellite(sat);
+			// });
 
-			//the first run through, we need to have the first item in the list get selected.
-			//NOTE: Beidou needs to exist, it may not. 
 			try {
-				var sat = getSatelliteByName('BEIDOU G1');
+				var sat = satelliteMap[0];
 				selectedSatellite = sat;
 				newlySelectedSatellite = true;
 				setCameraToSatellite(sat);
 			} catch (ex) {}
-
 			
 			$( "#loading-screen" ).css("display", "none");
 		}
