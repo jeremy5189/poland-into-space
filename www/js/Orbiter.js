@@ -172,7 +172,7 @@ function createOrbitor(context, satellite, tickController) {
 	satellite.orbit.semiMajorAxis = satellite.orbit.semiMajorAxis / 6371 * 200;
 	satellite.orbit.color = getOrbitColor(satellite);
 	
-	var texture = (satellite.orbit.name == "ISS (ZARYA)") ? "/img/sprites/iss_100x100.png" : "/img/sprites/pball.png";
+	var texture = (satellite.orbit.name == "ISS (ZARYA)") ? "img/sprites/iss_100x100.png" : "img/sprites/pball.png";
 	var size = (satellite.orbit.name == "ISS (ZARYA)") ? 25 : 50;
 	satellite.dot = new KMG.DotPlotObject(context, {color:0xFFFFFF, size: size, texture: texture });
 	satellite.dot.position.set(-200, 0, 0);
@@ -429,10 +429,10 @@ $(function() {
 	
 	var tex = {
 		name : "earth",
-		texture : "/img/planets_small/earth.jpg",
+		texture : "img/planets_small/earth.jpg",
 		bumpMap : "",
-		normalMap : "/img/flat_normalmap_128x64.jpg",
-		specularMap : "/img/earth_specularmap_flat_1024x512.jpg",
+		normalMap : "img/flat_normalmap_128x64.jpg",
+		specularMap : "img/earth_specularmap_flat_1024x512.jpg",
 		enabled : true
 	};
 	KMG.textures.push(tex);
@@ -713,7 +713,7 @@ $(function() {
 	}
 	
 	$.ajax({
-		url: "/js/norad_tle_satellites_no_debris.js",
+		url: "js/norad_tle_satellites_no_debris.js",
 		dataType: "script",
 		success: function(data, textStatus, jqxhr) {
 			

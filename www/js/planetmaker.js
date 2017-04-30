@@ -237,43 +237,43 @@ KMG.Math.convertEquatorialToEcliptic = function(ra, dec) {
 KMG.starFlares = [
 	{
 		name : "Yellow Star",
-		texture : "/img/lensflare0.png"
+		texture : "img/lensflare0.png"
 	},
 	{
 		name : "Aura",
-		texture : "/img/aura.png"
+		texture : "img/aura.png"
 	},
 	{
 		name : "Corona",
-		texture : "/img/corona.png"
+		texture : "img/corona.png"
 	},
 	{
 		name : "i0",
-		texture : "/img/i0.png"
+		texture : "img/i0.png"
 	},
 	{
 		name : "Nova",
-		texture : "/img/nova.png"
+		texture : "img/nova.png"
 	},
 	{
 		name : "Sparkle",
-		texture : "/img/sparkle.png"
+		texture : "img/sparkle.png"
 	},
 	{
 		name : "Star",
-		texture : "/img/star.png"
+		texture : "img/star.png"
 	},
 	{
 		name : "Sun",
-		texture : "/img/sun.png"
+		texture : "img/sun.png"
 	},/*
 	{
 		name : "Sun (Actual)",
-		texture : "/img/sun_actual.png"
+		texture : "img/sun_actual.png"
 	},*/
 	{
 		name : "Solar Corona SDO/AIA 3/12/2012 17:30:01 UT",
-		texture : "/img/latest_2048_0171.png"
+		texture : "img/latest_2048_0171.png"
 	}
 ];
 /* File: Backgrounds.js */
@@ -285,52 +285,52 @@ KMG.backgrounds = [
 		
 		// I'm not sure the exact origin of this image. If you know, or you made it, 
 		// please let me know at kevin@wthr.us so I can provide proper credit.
-		texture : "/img/starfield2_1900x1250.jpg",
+		texture : "img/starfield2_1900x1250.jpg",
 		enabled : true
 	},
 	{
 		name : "Tycho Star Map",
-		texture : "/img/tycho8-2048x1024.jpg",
+		texture : "img/tycho8-2048x1024.jpg",
 		enabled : true
 	},
 	{
 		name : "Hipparcos Star Map",
-		texture : "/img/hipp8-2048x1024.jpg",
+		texture : "img/hipp8-2048x1024.jpg",
 		enabled : true
 	},
 	{
 		name : "Yale Bright Star Map",
-		texture : "/img/yale8-2048x1024.jpg",
+		texture : "img/yale8-2048x1024.jpg",
 		enabled : true
 	},
 	{   // http://apod.nasa.gov/apod/ap110224.html
 		name : "NGC 1999: South of Orion",
-		texture : "/img/n1999_block.jpg",
+		texture : "img/n1999_block.jpg",
 		enabled : true
 	},
 	{   // http://apod.nasa.gov/apod/ap110219.html
 		name : "Spiral Galaxy NGC 2841",
-		texture : "/img/ngc2841c_hst_lg.jpg",
+		texture : "img/ngc2841c_hst_lg.jpg",
 		enabled : true
 	},
 	{   // http://apod.nasa.gov/apod/ap110215.html
 		name : "North America Nebula in Infrared",
-		texture : "/img/northamerica_spitzer_3000.jpg",
+		texture : "img/northamerica_spitzer_3000.jpg",
 		enabled : true
 	},
 	{   // http://apod.nasa.gov/apod/ap110215.html
 		name : "North America Nebula (Optical Light)",
-		texture : "/img/northamerica_v_900.jpg",
+		texture : "img/northamerica_v_900.jpg",
 		enabled : true
 	},
 	{   // http://apod.nasa.gov/apod/ap110214.html
 		name : "The Rosette Nebula ",
-		texture : "/img/rosette_lula_1700.jpg",
+		texture : "img/rosette_lula_1700.jpg",
 		enabled : true
 	},
 	{ // http://photojournal.jpl.nasa.gov/catalog/PIA07745
 		name : "Icy Crescent of Dione",
-		texture : "/img/PIA07745_dione.jpg",
+		texture : "img/PIA07745_dione.jpg",
 		enabled : true
 	},
 	{
@@ -349,24 +349,24 @@ KMG.backgrounds = [
 KMG.clouds = [
 	{
 		name : "xPlanet Daily Global Cloud Map",
-		texture : "/img/xplanet/0/clouds_xplanet_texture_2048x1024.png",
-		bumpMap : "/img/xplanet/0/clouds_2048.jpg",
-		aoMap : "/img/xplanet/0/clouds_ao_2048.jpg",
+		texture : "img/xplanet/0/clouds_xplanet_texture_2048x1024.png",
+		bumpMap : "img/xplanet/0/clouds_2048.jpg",
+		aoMap : "img/xplanet/0/clouds_ao_2048.jpg",
 		normalMap : null
 	},
 	{
 		name : "NASA Blue Marble Global Composite Clouds",
-		texture : "/img/clouds_texture_#resolution#.png",
-		bumpMap : "/img/clouds_bumpmap_#resolution#.jpg",
-		normalMap : "/img/clouds_normalmap_#resolution#.jpg",
-		aoMap : "/img/clouds_ao_#resolution#.jpg",
+		texture : "img/clouds_texture_#resolution#.png",
+		bumpMap : "img/clouds_bumpmap_#resolution#.jpg",
+		normalMap : "img/clouds_normalmap_#resolution#.jpg",
+		aoMap : "img/clouds_ao_#resolution#.jpg",
 	},
 	{
 		name : "Gas Giant Banded Clouds",
-		texture : "/img/gasgiant-clouds-#resolution#.png",
-		bumpMap : "/img/gasgiant-clouds-bumpmap-#resolution#.jpg",
-		normalMap : "/img/gasgiant-clouds-normalmap-#resolution#.jpg",
-		aoMap : "/img/gasgiant-clouds-ao-#resolution#.jpg",
+		texture : "img/gasgiant-clouds-#resolution#.png",
+		bumpMap : "img/gasgiant-clouds-bumpmap-#resolution#.jpg",
+		normalMap : "img/gasgiant-clouds-normalmap-#resolution#.jpg",
+		aoMap : "img/gasgiant-clouds-ao-#resolution#.jpg",
 	}
 ];
 /* File: Textures.js */
@@ -374,234 +374,234 @@ KMG.clouds = [
 KMG.textures = [
 	{
 		name : "Earth - Blue Marble",
-		texture : "/img/earth_bluemarble_#resolution#.jpg",
-		bumpMap : "/img/earth_bumpmap_flat_#resolution#.jpg",
-		normalMap : "/img/earth_normalmap_flat_#resolution#.jpg",
-		specularMap : "/img/earth_specularmap_flat_#resolution#.jpg",
+		texture : "img/earth_bluemarble_#resolution#.jpg",
+		bumpMap : "img/earth_bumpmap_flat_#resolution#.jpg",
+		normalMap : "img/earth_normalmap_flat_#resolution#.jpg",
+		specularMap : "img/earth_specularmap_flat_#resolution#.jpg",
 		enabled : true
 	},
 	{
 		name : "Earth - Blue Marble / Oceans & Ice",
-		texture : "/img/earth_bluemarble_land_ocean_ice_texture_#resolution#.jpg",
-		bumpMap : "/img/earth_bumpmap_flat_#resolution#.jpg",
-		normalMap : "/img/earth_normalmap_flat_#resolution#.jpg",
-		specularMap : "/img/earth_specularmap_flat_#resolution#.jpg",
+		texture : "img/earth_bluemarble_land_ocean_ice_texture_#resolution#.jpg",
+		bumpMap : "img/earth_bumpmap_flat_#resolution#.jpg",
+		normalMap : "img/earth_normalmap_flat_#resolution#.jpg",
+		specularMap : "img/earth_specularmap_flat_#resolution#.jpg",
 		enabled : true
 	},
 	{
 		name : "Earth - Blue Marble w/ Bathy",
-		texture : "/img/earth.topo.bathy.200407.3x#resolution#.jpg",
-		bumpMap : "/img/earth_bumpmap_#resolution#.jpg",
-		normalMap : "/img/earth_normalmap_#resolution#.jpg",
-		specularMap : "/img/earth_specularmap_flat_#resolution#.jpg",
+		texture : "img/earth.topo.bathy.200407.3x#resolution#.jpg",
+		bumpMap : "img/earth_bumpmap_#resolution#.jpg",
+		normalMap : "img/earth_normalmap_#resolution#.jpg",
+		specularMap : "img/earth_specularmap_flat_#resolution#.jpg",
 		enabled : true
 	},
 	{
 		name : "Earth - Blue Marble w/ Bathy (Flat Ocean Shading)",
-		texture : "/img/earth.topo.bathy.200407.3x#resolution#.jpg",
-		bumpMap : "/img/earth_bumpmap_flat_#resolution#.jpg",
-		normalMap :  "/img/earth_normalmap_flat_#resolution#.jpg",
-		specularMap : "/img/earth_specularmap_flat_#resolution#.jpg",
+		texture : "img/earth.topo.bathy.200407.3x#resolution#.jpg",
+		bumpMap : "img/earth_bumpmap_flat_#resolution#.jpg",
+		normalMap :  "img/earth_normalmap_flat_#resolution#.jpg",
+		specularMap : "img/earth_specularmap_flat_#resolution#.jpg",
 		enabled : true
 	},
 	{
 		name : "Earth - GEBCO8 Altimetry & Bathy",
-		texture : "/img/earth_gebco8_texture_#resolution#.jpg",
-		bumpMap : "/img/earth_bumpmap_#resolution#.jpg",
-		normalMap : "/img/earth_normalmap_#resolution#.jpg",
-		specularMap : "/img/earth_specularmap_flat_#resolution#.jpg",
+		texture : "img/earth_gebco8_texture_#resolution#.jpg",
+		bumpMap : "img/earth_bumpmap_#resolution#.jpg",
+		normalMap : "img/earth_normalmap_#resolution#.jpg",
+		specularMap : "img/earth_specularmap_flat_#resolution#.jpg",
 		enabled : true
 	},
 	{
 		name : "Earth - Blue Marble Night Lights",
-		texture : "/img/earth_nightlights_#resolution#.jpg",
-		bumpMap : "/img/earth_bumpmap_flat_#resolution#.jpg",
-		normalMap : "/img/earth_normalmap_flat_#resolution#.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		texture : "img/earth_nightlights_#resolution#.jpg",
+		bumpMap : "img/earth_bumpmap_flat_#resolution#.jpg",
+		normalMap : "img/earth_normalmap_flat_#resolution#.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Earth - Vegetation as Seen by Suomi NPP",
-		texture : "/img/SMNDVI-2012-week25_#resolution#.jpg",
-		bumpMap : "/img/earth_bumpmap_flat_#resolution#.jpg",
-		normalMap : "/img/earth_normalmap_flat_#resolution#.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		texture : "img/SMNDVI-2012-week25_#resolution#.jpg",
+		bumpMap : "img/earth_bumpmap_flat_#resolution#.jpg",
+		normalMap : "img/earth_normalmap_flat_#resolution#.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Earth - City Lights as Seen by Suomi NPP",
-		texture : "/img/blackmarble-suomi-npp-texture-#resolution#.jpg",
-		bumpMap : "/img/earth_bumpmap_flat_#resolution#.jpg",
-		normalMap : "/img/earth_normalmap_flat_#resolution#.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		texture : "img/blackmarble-suomi-npp-texture-#resolution#.jpg",
+		bumpMap : "img/earth_bumpmap_flat_#resolution#.jpg",
+		normalMap : "img/earth_normalmap_flat_#resolution#.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Mars",
-		texture : "/img/tx_composite.adjusted.#resolution#.jpg",
-		bumpMap : "/img/mars_mola_bumpmap_#resolution#.jpg",
-		normalMap : "/img/mars_mola_normalmap_#resolution#.jpg",
-		specularMap :"/img/flat_black_texture.jpg",
+		texture : "img/tx_composite.adjusted.#resolution#.jpg",
+		bumpMap : "img/mars_mola_bumpmap_#resolution#.jpg",
+		normalMap : "img/mars_mola_normalmap_#resolution#.jpg",
+		specularMap :"img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Mars - MOLA Altimetry",
-		texture : "/img/mars_mola_hypsometric_#resolution#.jpg",
-		bumpMap : "/img/mars_mola_bumpmap_#resolution#.jpg",
-		normalMap : "/img/mars_mola_normalmap_#resolution#.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		texture : "img/mars_mola_hypsometric_#resolution#.jpg",
+		bumpMap : "img/mars_mola_bumpmap_#resolution#.jpg",
+		normalMap : "img/mars_mola_normalmap_#resolution#.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Mars with Oceans",
-		texture : "/img/mars_wetred_texture_#resolution#.jpg",
-		bumpMap : "/img/mars_mola_bumpmap_sealevel_#resolution#.jpg",
-		normalMap : "/img/mars_mola_normalmap_flat_#resolution#.jpg",
-		specularMap : "/img/mars_mola_specularmap_#resolution#.jpg",
+		texture : "img/mars_wetred_texture_#resolution#.jpg",
+		bumpMap : "img/mars_mola_bumpmap_sealevel_#resolution#.jpg",
+		normalMap : "img/mars_mola_normalmap_flat_#resolution#.jpg",
+		specularMap : "img/mars_mola_specularmap_#resolution#.jpg",
 		enabled : true
 	},
 	{
 		name : "Living Mars",
-		texture : "/img/mars-wet-flora-layer-v3-#resolution#.jpg",
-		bumpMap : "/img/mars_mola_bumpmap_sealevel_#resolution#.jpg",
-		normalMap : "/img/mars_mola_normalmap_flat_#resolution#.jpg",
-		specularMap : "/img/mars_mola_specularmap_#resolution#.jpg",
+		texture : "img/mars-wet-flora-layer-v3-#resolution#.jpg",
+		bumpMap : "img/mars_mola_bumpmap_sealevel_#resolution#.jpg",
+		normalMap : "img/mars_mola_normalmap_flat_#resolution#.jpg",
+		specularMap : "img/mars_mola_specularmap_#resolution#.jpg",
 		enabled : true
 	},
 	{
 		name : "Moon",
-		texture : "/img/moon_8k_color_brim16_revhemi_#resolution#.jpg",
-		bumpMap : "/img/moon_lro_bumpmap_#resolution#.jpg",
-		normalMap : "/img/moon_lro_normalmap_#resolution#.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		texture : "img/moon_8k_color_brim16_revhemi_#resolution#.jpg",
+		bumpMap : "img/moon_lro_bumpmap_#resolution#.jpg",
+		normalMap : "img/moon_lro_normalmap_#resolution#.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Moon - LRO Altimetry",
-		texture : "/img/moon_lro_hypsometric_#resolution#.jpg",
-		bumpMap : "/img/moon_lro_bumpmap_#resolution#.jpg",
-		normalMap : "/img/moon_lro_normalmap_#resolution#.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		texture : "img/moon_lro_hypsometric_#resolution#.jpg",
+		bumpMap : "img/moon_lro_bumpmap_#resolution#.jpg",
+		normalMap : "img/moon_lro_normalmap_#resolution#.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Jupiter",
-		texture : "/img/jupiter_johnw_texture_#resolution#.jpg",
+		texture : "img/jupiter_johnw_texture_#resolution#.jpg",
 		bumpMap :  null,
-		normalMap : "/img/flat_normalmap_128x64.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		normalMap : "img/flat_normalmap_128x64.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Saturn",
-		texture : "/img/th_saturn_texture_#resolution#.jpg",
+		texture : "img/th_saturn_texture_#resolution#.jpg",
 		bumpMap :  null,
-		normalMap : "/img/flat_normalmap_128x64.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		normalMap : "img/flat_normalmap_128x64.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Venus",
-		texture : "/img/ven0mss2_jpl_mariner10_#resolution#.jpg",
+		texture : "img/ven0mss2_jpl_mariner10_#resolution#.jpg",
 		bumpMap :  null,
-		normalMap : "/img/flat_normalmap_128x64.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		normalMap : "img/flat_normalmap_128x64.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Venus - Magellan RADAR",
-		texture : "/img/venmap_jpl_magellan_#resolution#.jpg",
+		texture : "img/venmap_jpl_magellan_#resolution#.jpg",
 		bumpMap :  null,
-		normalMap : "/img/flat_normalmap_128x64.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		normalMap : "img/flat_normalmap_128x64.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Terrestrial Planet X.0",
-		texture : "/img/libnoise_0/terrainsurface_#resolution#.jpg",
-		bumpMap :  "/img/libnoise_0/terrainbump_#resolution#.jpg",
-		normalMap : "/img/libnoise_0/terrainnormal_#resolution#.jpg",
-		specularMap : "/img/libnoise_0/terrainspec_#resolution#.jpg",
+		texture : "img/libnoise_0/terrainsurface_#resolution#.jpg",
+		bumpMap :  "img/libnoise_0/terrainbump_#resolution#.jpg",
+		normalMap : "img/libnoise_0/terrainnormal_#resolution#.jpg",
+		specularMap : "img/libnoise_0/terrainspec_#resolution#.jpg",
 		enabled : true
 	},
 	{
 		name : "Terrestrial Planet X.1",
-		texture : "/img/libnoise_1/terrainsurface_#resolution#.jpg",
-		bumpMap :  "/img/libnoise_1/terrainbump_#resolution#.jpg",
-		normalMap : "/img/libnoise_1/terrainnormal_#resolution#.jpg",
-		specularMap : "/img/libnoise_1/terrainspec_#resolution#.jpg",
+		texture : "img/libnoise_1/terrainsurface_#resolution#.jpg",
+		bumpMap :  "img/libnoise_1/terrainbump_#resolution#.jpg",
+		normalMap : "img/libnoise_1/terrainnormal_#resolution#.jpg",
+		specularMap : "img/libnoise_1/terrainspec_#resolution#.jpg",
 		enabled : true
 	},
 	{
 		name : "Terrestrial Planet X.2",
-		texture : "/img/libnoise_2/terrainsurface_#resolution#.jpg",
-		bumpMap :  "/img/libnoise_2/terrainbump_#resolution#.jpg",
-		normalMap : "/img/libnoise_2/terrainnormal_#resolution#.jpg",
-		specularMap : "/img/libnoise_2/terrainspec_#resolution#.jpg",
+		texture : "img/libnoise_2/terrainsurface_#resolution#.jpg",
+		bumpMap :  "img/libnoise_2/terrainbump_#resolution#.jpg",
+		normalMap : "img/libnoise_2/terrainnormal_#resolution#.jpg",
+		specularMap : "img/libnoise_2/terrainspec_#resolution#.jpg",
 		enabled : true
 	},
 	{
 		name : "Terrestrial Planet X.3",
-		texture : "/img/libnoise_3/terrainsurface_#resolution#.jpg",
-		bumpMap :  "/img/libnoise_3/terrainbump_#resolution#.jpg",
-		normalMap : "/img/libnoise_3/terrainnormal_#resolution#.jpg",
-		specularMap : "/img/libnoise_3/terrainspec_#resolution#.jpg",
+		texture : "img/libnoise_3/terrainsurface_#resolution#.jpg",
+		bumpMap :  "img/libnoise_3/terrainbump_#resolution#.jpg",
+		normalMap : "img/libnoise_3/terrainnormal_#resolution#.jpg",
+		specularMap : "img/libnoise_3/terrainspec_#resolution#.jpg",
 		enabled : true
 	},
 	{
 		name : "Terrestrial Planet X.3 (Gray)",
-		texture : "/img/libnoise_3/terrainsurface_gray_#resolution#.jpg",
-		bumpMap :  "/img/libnoise_3/terrainbump_#resolution#.jpg",
-		normalMap : "/img/libnoise_3/terrainnormal_#resolution#.jpg",
-		specularMap : "/img/libnoise_3/terrainspec_#resolution#.jpg",
+		texture : "img/libnoise_3/terrainsurface_gray_#resolution#.jpg",
+		bumpMap :  "img/libnoise_3/terrainbump_#resolution#.jpg",
+		normalMap : "img/libnoise_3/terrainnormal_#resolution#.jpg",
+		specularMap : "img/libnoise_3/terrainspec_#resolution#.jpg",
 		enabled : true
 	},
 	{
 		name : "Gas Giant (Browns)",
-		texture : "/img/gas_0/orange_and_browns_#resolution#.jpg",
+		texture : "img/gas_0/orange_and_browns_#resolution#.jpg",
 		bumpMap :  null,
-		normalMap : "/img/flat_normalmap_128x64.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		normalMap : "img/flat_normalmap_128x64.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Gas Giant (Purples)",
-		texture : "/img/gas_1/purples_texture_#resolution#.jpg",
+		texture : "img/gas_1/purples_texture_#resolution#.jpg",
 		bumpMap :  null,
-		normalMap : "/img/flat_normalmap_128x64.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		normalMap : "img/flat_normalmap_128x64.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Gas Giant 3 (Grey)",
-		texture : "/img/gas_2/gas_giant_texture_grey_#resolution#.jpg",
-		bumpMap :  "/img/gas_2/gas_giant_texture_grey_#resolution#.jpg",
-		normalMap : "/img/flat_normalmap_128x64.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		texture : "img/gas_2/gas_giant_texture_grey_#resolution#.jpg",
+		bumpMap :  "img/gas_2/gas_giant_texture_grey_#resolution#.jpg",
+		normalMap : "img/flat_normalmap_128x64.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Gas Giant 3 (Grey, Inverted)",
-		texture : "/img/gas_2/gas_giant_texture_grey_inverted_#resolution#.jpg",
-		bumpMap :  "/img/gas_2/gas_giant_texture_grey_inverted_#resolution#.jpg",
-		normalMap : "/img/flat_normalmap_128x64.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		texture : "img/gas_2/gas_giant_texture_grey_inverted_#resolution#.jpg",
+		bumpMap :  "img/gas_2/gas_giant_texture_grey_inverted_#resolution#.jpg",
+		normalMap : "img/flat_normalmap_128x64.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Gas Giant 4",
-		texture : "/img/gasgiant-4-texture-#resolution#.jpg",
+		texture : "img/gasgiant-4-texture-#resolution#.jpg",
 		bumpMap :  null,
-		normalMap : "/img/flat_normalmap_128x64.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		normalMap : "img/flat_normalmap_128x64.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
 		name : "Sun",
-		texture : "/img/th_sun_basetexture_#resolution#.jpg",
+		texture : "img/th_sun_basetexture_#resolution#.jpg",
 		bumpMap :  null,
-		normalMap :  "/img/flat_normalmap_128x64.jpg",
-		specularMap : "/img/flat_black_texture.jpg",
+		normalMap :  "img/flat_normalmap_128x64.jpg",
+		specularMap : "img/flat_black_texture.jpg",
 		enabled : true
 	},
 	{
@@ -636,66 +636,66 @@ KMG.textures = [
 KMG.rings = [
 	{
 		name : "Saturn",
-		texture : "/img/saturn-rings.png"
+		texture : "img/saturn-rings.png"
 	},
 	{
 		name : "Uranus",
-		texture : "/img/uranus-rings.png"
+		texture : "img/uranus-rings.png"
 	},
 	{
 		name : "Neptune",
-		texture : "/img/neptune-rings.png"
+		texture : "img/neptune-rings.png"
 	},
 	{
 		name : "Grays",
-		texture : "/img/grays-ring.png"
+		texture : "img/grays-ring.png"
 	},
 	{
 		name : "Abstract3",
-		texture : "/img/abstract3-ring.png"
+		texture : "img/abstract3-ring.png"
 	},
 	{
 		name : "Anuerism",
-		texture : "/img/anuerism-ring.png"
+		texture : "img/anuerism-ring.png"
 	},
 	{
 		name : "Browns",
-		texture : "/img/browns-ring.png"
+		texture : "img/browns-ring.png"
 	},
 	{
 		name : "Brushed Aluminum",
-		texture : "/img/brushed-aluminum-ring.png"
+		texture : "img/brushed-aluminum-ring.png"
 	},
 	{
 		name : "Flare Glow Angular 1",
-		texture : "/img/flare-glow-angular-1-ring.png"
+		texture : "img/flare-glow-angular-1-ring.png"
 	},
 	{
 		name : "Golden",
-		texture : "/img/golden-ring.png"
+		texture : "img/golden-ring.png"
 	},
 	{
 		name : "Greens",
-		texture : "/img/greens-ring.png"
+		texture : "img/greens-ring.png"
 	},
 	{
 		name : "Red Tube",
-		texture : "/img/red-tube-ring.png"
+		texture : "img/red-tube-ring.png"
 	},
 	{
 		name : "Yellow Contrast",
-		texture : "/img/yellow-contrast-ring.png"
+		texture : "img/yellow-contrast-ring.png"
 	},
 	{
 		name : "Yellow Orange",
-		texture : "/img/yellow-orange-ring.png"
+		texture : "img/yellow-orange-ring.png"
 	}
 ];
 /* File: NightLights.js */
 KMG.lights = [
 	{
 		name : "Earth - Blue Marble Night Lights",
-		texture : "/img/earth_nightlightsonly_#resolution#.gif"
+		texture : "img/earth_nightlightsonly_#resolution#.gif"
 	}
 ];
 
@@ -6555,7 +6555,7 @@ KMG.CatalogStarsObject = function ( context, config ) {
 	
 	
 	$.ajax({
-		url: "/data/stars/bright_star_db_v5-1_rest.json",
+		url: "data/stars/bright_star_db_v5-1_rest.json",
 		dataType: "json",
 		error: function( jqXHR, textStatus, errorThrown ) {
 			console.warn("Error: " + errorThrown);
@@ -6648,7 +6648,7 @@ KMG.ConstellationLines = function ( context, config ) {
 	
 	
 	$.ajax({
-		url: "/data/stars/sfa_constellation_lines.json",
+		url: "data/stars/sfa_constellation_lines.json",
 		dataType: "json",
 		error: function( jqXHR, textStatus, errorThrown ) {
 			console.warn("Error: " + errorThrown);
@@ -7445,10 +7445,10 @@ KMG.LensFlareObject = function ( context, config ) {
 
 	
 	// Create Stuff
-	// See http://planetmaker.wthr.us/img/LICENSE.txt
-	var textureFlare1 = KMG.TextureMap.loadTexture( "/img/lensflare1.png" );
-	var textureFlare2 = KMG.TextureMap.loadTexture( "/img/lensflare2.png" );
-	var textureFlare3 = KMG.TextureMap.loadTexture( "/img/lensflare3.png" );
+	// See http://planetmaker.wthr.usimg/LICENSE.txt
+	var textureFlare1 = KMG.TextureMap.loadTexture( "img/lensflare1.png" );
+	var textureFlare2 = KMG.TextureMap.loadTexture( "img/lensflare2.png" );
+	var textureFlare3 = KMG.TextureMap.loadTexture( "img/lensflare3.png" );
 	
 	var lensFlare = new THREE.LensFlare( textureFlare1, 1000, 1.0, THREE.AdditiveBlending, 0xFFFFFF );
 	
@@ -7507,7 +7507,7 @@ KMG.CometObject = function ( context, config, ephemeris, tickController, centerO
 	
 	this.lookingTowards = (config.lookingTowards) ? config.lookingTowards : { position: new THREE.Vector3(0, 0, 0) };
 	
-	var cometTexture = KMG.TextureMap.loadTexture("/img/basic-comet-3-trans.png");
+	var cometTexture = KMG.TextureMap.loadTexture("img/basic-comet-3-trans.png");
 	cometTexture.wrapS = cometTexture.wrapT = THREE.ClampToEdgeWrapping;
 	cometTexture.format = THREE.RGBAFormat;
 	cometTexture.needsUpdate = true;
@@ -7871,7 +7871,7 @@ KMG.DefaultSunOptions = {
 	material : KMG.MaterialLambert,
 	specular : 0x000000,
 	shadows : false,
-	coronaTexture : "/img/sparkle.png"
+	coronaTexture : "img/sparkle.png"
 };
 
 
@@ -7961,7 +7961,7 @@ KMG.AxisLinesObject = function(context, config) {
 	var scope = this;
 	
 
-	var tex = KMG.TextureMap.loadTexture("/img/BrushedMetal.jpg");
+	var tex = KMG.TextureMap.loadTexture("img/BrushedMetal.jpg");
 	tex.format = THREE.RGBAFormat;
 	
 	function createLine(length, width) {
